@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "Hash": "fuH1fn12xtvU1DOweVJId6MSUW2SvJbjeC97/XRtirs=",
+  "Source": "AdoNetCustomData",
+  "BasePath": "_content/AdoNetCustomData",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AdoNetCustomData\\wwwroot",
+      "Source": "AdoNetCustomData",
+      "ContentRoot": "C:\\Users\\User\\c#-ASP.NET\\AdoNetCustomData\\AdoNetCustomData\\wwwroot\\",
+      "BasePath": "_content/AdoNetCustomData",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\User\\c#-ASP.NET\\AdoNetCustomData\\AdoNetCustomData\\wwwroot\\assets\\favicon.ico",
+      "SourceId": "AdoNetCustomData",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\c#-ASP.NET\\AdoNetCustomData\\AdoNetCustomData\\wwwroot\\",
+      "BasePath": "_content/AdoNetCustomData",
+      "RelativePath": "assets/favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\User\\c#-ASP.NET\\AdoNetCustomData\\AdoNetCustomData\\wwwroot\\css\\styles.css",
+      "SourceId": "AdoNetCustomData",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\c#-ASP.NET\\AdoNetCustomData\\AdoNetCustomData\\wwwroot\\",
+      "BasePath": "_content/AdoNetCustomData",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
+    },
+    {
+      "Identity": "C:\\Users\\User\\c#-ASP.NET\\AdoNetCustomData\\AdoNetCustomData\\wwwroot\\js\\scripts.js",
+      "SourceId": "AdoNetCustomData",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\c#-ASP.NET\\AdoNetCustomData\\AdoNetCustomData\\wwwroot\\",
+      "BasePath": "_content/AdoNetCustomData",
+      "RelativePath": "js/scripts.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\scripts.js"
+    }
+  ]
+}
