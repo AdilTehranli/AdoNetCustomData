@@ -42,7 +42,20 @@ namespace AdoNetCustomData.Controllers
             IBranchService service = new BranchService();
             return (IAsyncResult)Json(await service.GetByIdAsync(id));
         }
-      
+        public async Task<IActionResult> EmployeeGetById(int id)
+        {
+            IBranchService service = new BranchService();
+            return Json(await service.GetByIdAsync(id));
+        }
+        public async Task<IActionResult> EmployeeDelete(int id)
+        {
+            IBranchService service = new BranchService();
+            if (await service.Delete(id) > 0)
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
 
 
     }
