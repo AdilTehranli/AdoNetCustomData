@@ -3,19 +3,14 @@ using System.Data;
 
 namespace AdoNetCustomData.Helpers
 {
-    public class SqlNetHelper
+    public static class SqlNetHelper
     {
-        private string _connectionStr = "Server=MSI\\SQLEXPRESS;Database=ObaMarket;Trusted_Connection=True;Encrypt=false";
+        private const string _connectionStr = "Server=MSI\\SQLEXPRESS;Database=ObaMarket;Trusted_Connection=True;Encrypt=false";
 
-		public string ConnectionStr 
-		{
-			get { return _connectionStr ; }
-			
-		}
 
-		public async Task<DataTable>  SelectAsync(string query)
+		public static async Task<DataTable>  SelectAsync(string query)
 		{
-			using(SqlConnection conn  = new SqlConnection(ConnectionStr))
+			using(SqlConnection conn  = new SqlConnection(_connectionStr))
 			{
 				await conn.OpenAsync();
 				using (SqlDataAdapter sda = new SqlDataAdapter(query,conn))
@@ -24,6 +19,15 @@ namespace AdoNetCustomData.Helpers
 					sda.Fill(dt);
 					return dt;
 				}
+			}
+		}
+		public static async Task<int> ExecuteAsync(string command)
+		{
+			using (SqlConnection conn = new SqlConnection(_connectionStr))
+			{
+				await conn.OpenAsync();
+				using (SqlCommand cmd = new SqlCommand(command,conn))
+				{  return await cmd.ExecuteNonQueryAsync(); }
 			}
 		}
 	}

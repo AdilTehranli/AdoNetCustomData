@@ -10,10 +10,8 @@ namespace AdoNetCustomData.Controllers
     {
         public async Task<IActionResult>  Index()
         {
-            string connstr = "Server=MSI\\SQLEXPRESS;Database=ObaMarket;Trusted_Connection=True;Encrypt=false";
             List<Branch> branches = new List<Branch>();
-          SqlNetHelper sqlHelper = new SqlNetHelper();
-            DataTable dt = await  sqlHelper.SelectAsync("SELECT * FROM Branch");
+            DataTable dt = await  SqlNetHelper.SelectAsync("SELECT * FROM Branch");
                     foreach ( DataRow item in dt.Rows)
                     {
                         branches.Add(new()
@@ -29,16 +27,8 @@ namespace AdoNetCustomData.Controllers
         [HttpPost]
         public async Task<IActionResult> Branch(string name)
         {
-            string connstr = "Server=MSI\\SQLEXPRESS;Database=ObaMarket;Trusted_Connection=True;Encrypt=false";
-            List<Branch> branches = new List<Branch>();
-            using SqlConnection conn = new SqlConnection(connstr);
-            
-                await conn.OpenAsync();
-            using SqlCommand command = new SqlCommand($"INSERT INTO Branch VALUES ('{name}')", conn);
-                
-                 int res =  await command.ExecuteNonQueryAsync();
-                
-            return Content(name);
+          var res=  await SqlNetHelper.ExecuteAsync($"INSERT INTO Branch VALUES ('{name}')");
+            return Content(res.ToString());
         }
     }
 }
