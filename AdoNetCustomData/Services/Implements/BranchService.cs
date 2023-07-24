@@ -3,6 +3,7 @@ using AdoNetCustomData.Models;
 using AdoNetCustomData.Services.Interfaces;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Data;
 
 namespace AdoNetCustomData.Services.Implements;
 
@@ -23,22 +24,40 @@ public class BranchService : IBranchService
         return await SqlNetHelper.ExecuteAsync(query.Substring(0,query.Length-1));
     }
 
-    public int Delete(int id)
+    public async Task<int>  Delete(int id)
     {
-        throw new NotImplementedException();
+        await GetByIdAsync(id);
+        return await SqlNetHelper.ExecuteAsync("DELETE * FROM Branch =" +  id);
     }
 
-    public Task<List<Branch>> GetAllAsync()
+    public async Task<List<Branch>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        List<Branch> list = new List<Branch>();
+        DataTable dt = await SqlNetHelper.SelectAsync("SELECT * FROM Branch");
+        foreach (DataRow item in dt.Rows)
+        {
+            list.Add(new Branch
+            {
+                Id = (int)item["Id"],
+                Name = (string)item["Name"]
+            });
+        }
+        return list;
     }
 
-    public Task<Branch> GetByIdAsync(int id)
+    public async Task<Branch> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+       DataTable dt = await SqlNetHelper.SelectAsync("SELECT * FROM Branch where Id = " + id);
+        if (dt.Rows.Count != 1) throw new Exception("Error");
+        return new Branch
+        {
+            Id = (int)dt.Rows[0]["Id"],
+            Name = (string)dt.Rows[0]["Name"]
+        };
+
     }
 
-    public Branch Update(int id, Branch branch)
+    public Task<Branch>  Update(int id, Branch branch)
     {
         throw new NotImplementedException();
     }

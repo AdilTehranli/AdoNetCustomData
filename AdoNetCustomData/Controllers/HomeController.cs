@@ -1,5 +1,7 @@
 ﻿using AdoNetCustomData.Helpers;
 using AdoNetCustomData.Models;
+using AdoNetCustomData.Services.Implements;
+using AdoNetCustomData.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
@@ -30,5 +32,11 @@ namespace AdoNetCustomData.Controllers
           var res=  await SqlNetHelper.ExecuteAsync($"INSERT INTO Branch VALUES ('{name}')");
             return Content(res.ToString());
         }
+        public async Task<IActionResult> BranchGetAll()
+        {
+           IBranchService service = new BranchService();
+            return Json(await service.GetAllAsync());
+        }
+
     }
 }
