@@ -57,7 +57,13 @@ public class BranchService : IBranchService
 
     }
 
-    public Task<Branch>  Update(int id, Branch branch)
+    public async Task<int> Update(int id, Branch branch)
+    {
+        await GetByIdAsync(id);
+        return await SqlNetHelper.ExecuteAsync($"UPDATE Branch SET Name='{branch.Name}' WHERE Id={id}");
+    }
+
+    Task<Branch> IBranchService.Update(int id, Branch branch)
     {
         throw new NotImplementedException();
     }
